@@ -1,789 +1,578 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online color picker tool. Generate, convert, and explore color palettes with HEX, RGB, HSL, and CMYK values. Perfect for designers and developers.">
-    <meta name="keywords" content="color picker, color generator, color palette, HEX color, RGB color, HSL color, CMYK color, color converter, web design colors">
-    <meta name="author" content="DesignTools.com">
-    <meta property="og:title" content="Free Online Color Picker | Generate & Convert Color Codes">
-    <meta property="og:description" content="Advanced color picker tool with palette generation and conversion between HEX, RGB, HSL, and CMYK color formats.">
+    <meta name="description" content="Free online color picker tool. Select, convert, and get color codes in HEX, RGB, HSL, and CMYK formats. Perfect for designers and developers.">
+    <meta name="keywords" content="color picker, color tool, hex color, rgb color, hsl color, cmyk color, web design colors, color palette generator">
+    <meta name="author" content="Color Picker Tool">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourwebsite.com/color-picker" />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Online Color Picker Tool | HEX, RGB, HSL & CMYK">
+    <meta property="og:description" content="Free online color picker tool for designers and developers. Get color codes in multiple formats instantly.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yoursite.com/color-picker">
-    <meta name="twitter:card" content="summary_large_image">
-    <title>Color Picker Tool | Generate & Convert HEX, RGB, HSL, CMYK Colors</title>
+    <meta property="og:url" content="https://yourwebsite.com/color-picker">
+    <meta property="og:image" content="https://yourwebsite.com/images/color-picker-preview.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <title>Online Color Picker Tool | HEX, RGB, HSL & CMYK</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+
     <style>
-        :root {
-            --primary-color: #8e44ad;
-            --secondary-color: #9b59b6;
-            --accent-color: #3498db;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-            --success-color: #27ae60;
+         :root {
+            --primary-color: #4a6bff;
+            --secondary-color: #f8f9fa;
+            --dark-color: #343a40;
+            --light-color: #ffffff;
+            --success-color: #28a745;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
         }
         
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
         }
         
         body {
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: var(--dark-color);
-            background-color: #f5f7fa;
-            padding: 0;
-            margin: 0;
-        }
-        
-        header {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            color: #333;
+            background-color: #f5f7ff;
         }
         
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
+        }
+        /* Header Styles */
+        
+        header {
+            background-color: var(--light-color);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
         }
         
-        .tagline {
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--dark-color);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 20px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        /* Hero Section */
+        
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .hero p {
             font-size: 1.1rem;
-            opacity: 0.9;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        /* Color Picker Section */
+        
+        .color-picker-section {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
         }
         
-        main {
-            padding: 2rem 0;
+        .color-picker-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
         
-        .tool-section {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 2rem;
-            margin-bottom: 2rem;
+        @media (min-width: 768px) {
+            .color-picker-container {
+                flex-direction: row;
+            }
+        }
+        
+        .color-selector {
+            flex: 1;
         }
         
         .color-display {
+            flex: 1;
             display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            flex-direction: column;
+            align-items: center;
         }
         
-        .color-main {
-            flex: 1;
-            min-width: 250px;
+        .color-preview {
+            width: 100%;
             height: 200px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: background-color 0.3s;
         }
         
-        .color-info {
-            flex: 1;
-            min-width: 250px;
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        .color-values {
+            width: 100%;
         }
         
-        .color-code {
+        .color-value {
             display: flex;
-            margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            overflow: hidden;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            background-color: var(--secondary-color);
+            border-radius: var(--border-radius);
         }
         
-        .color-code input {
-            flex: 1;
-            padding: 0.8rem;
+        .color-value label {
+            font-weight: 500;
+        }
+        
+        .color-value input {
             border: none;
-            font-size: 1rem;
-            font-family: monospace;
+            background: transparent;
+            font-family: 'Poppins', sans-serif;
+            text-align: right;
+            width: 60%;
+            cursor: pointer;
+        }
+        
+        .color-value input:focus {
+            outline: none;
         }
         
         .copy-btn {
             background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 0 1.2rem;
+            padding: 5px 10px;
+            border-radius: 4px;
             cursor: pointer;
-            font-weight: bold;
+            font-size: 0.8rem;
             transition: background-color 0.3s;
         }
         
         .copy-btn:hover {
+            background-color: #3a5bef;
+        }
+        /* AdSense Section */
+        
+        .ad-container {
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
             background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: var(--border-radius);
         }
         
-        .color-formats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .format-group {
-            margin-bottom: 1rem;
-        }
-        
-        .format-group label {
-            display: block;
-            margin-bottom: 0.3rem;
-            font-size: 0.9rem;
-            color: #7f8c8d;
-        }
-        
-        .format-group input {
+        .ad-placeholder {
             width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: monospace;
-        }
-        
-        .controls {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .control-group {
-            margin-bottom: 1rem;
-        }
-        
-        .control-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        
-        input[type="range"] {
-            width: 100%;
-            margin: 10px 0;
-        }
-        
-        .range-container {
+            max-width: 728px;
+            height: 90px;
+            background-color: #e9ecef;
             display: flex;
             align-items: center;
-            gap: 1rem;
-        }
-        
-        .range-value {
-            font-weight: bold;
-            min-width: 40px;
-            text-align: center;
-        }
-        
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
+            justify-content: center;
+            color: #6c757d;
             border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background-color 0.3s;
-            width: 100%;
         }
-        
-        button:hover {
-            background-color: var(--secondary-color);
-        }
-        
-        .random-btn {
-            background-color: var(--accent-color);
-        }
-        
-        .random-btn:hover {
-            background-color: #2980b9;
-        }
-        
-        .palette-section {
-            margin-top: 2rem;
-        }
-        
-        .palette-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .palette {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-        
-        .palette-color {
-            height: 100px;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .palette-code {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 0.3rem;
-            text-align: center;
-            font-size: 0.8rem;
-            font-family: monospace;
-            border-radius: 0 0 4px 4px;
-        }
-        
-        .info-section {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        h2 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        h3 {
-            color: var(--secondary-color);
-            margin: 1.5rem 0 0.5rem;
-        }
-        
-        p, ul {
-            margin-bottom: 1rem;
-        }
-        
-        ul {
-            padding-left: 1.5rem;
-        }
+        /* Footer */
         
         footer {
             background-color: var(--dark-color);
-            color: white;
-            text-align: center;
-            padding: 1.5rem 0;
-            margin-top: 2rem;
+            color: var(--light-color);
+            padding: 30px 0;
+            margin-top: 50px;
         }
         
-        /* Ad Container Styles */
-        .ad-container {
-            margin: 2rem 0;
-            text-align: center;
-            min-height: 90px;
+        .footer-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f5f5f5;
-            border-radius: 4px;
-            overflow: hidden;
+            flex-direction: column;
+            gap: 30px;
         }
         
-        .ad-container.horizontal {
-            width: 100%;
-            height: 90px;
+        @media (min-width: 768px) {
+            .footer-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
         }
         
-        .ad-container.vertical {
-            width: 300px;
-            height: 250px;
-            margin: 2rem auto;
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
         }
         
-        .ad-container.rectangle {
-            width: 728px;
-            height: 90px;
-            margin: 2rem auto;
+        .footer-section ul {
+            list-style: none;
         }
         
-        .ad-label {
-            font-size: 0.8rem;
-            color: #666;
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-section ul li a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--light-color);
+        }
+        
+        .copyright {
             text-align: center;
-            margin-bottom: 0.5rem;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 0.9rem;
         }
+        /* Responsive Styles */
         
         @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .tagline {
-                font-size: 1rem;
-            }
-            
-            .tool-section, .info-section {
-                padding: 1.5rem;
-            }
-            
-            .ad-container.rectangle {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
                 width: 100%;
-                height: auto;
-            }
-            
-            .ad-container.vertical {
-                width: 100%;
-                height: auto;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .color-display {
+                height: calc(100vh - 70px);
+                background-color: var(--light-color);
                 flex-direction: column;
+                align-items: center;
+                padding-top: 30px;
+                transition: left 0.3s;
             }
-            
-            .color-main {
-                height: 150px;
+            .nav-menu.active {
+                left: 0;
             }
-            
-            .ad-container.horizontal {
-                height: 50px;
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            .hamburger {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
+
 <body>
+    <!-- Header -->
     <header>
-        <div class="container">
-            <h1>Color Picker Tool</h1>
-            <p class="tagline">Generate, convert, and explore beautiful color palettes</p>
+        <div class="container header-container">
+            <a href="/itools" class="logo">Your<span>Website</span></a>
+            <div class="hamburger" id="hamburger">☰</div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/itools">Home</a></li>
+                <li><a href="/color-palettes">Palettes</a></li>
+                <li><a href="/color-converter">Converter</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
         </div>
     </header>
-    
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Online Color Picker Tool</h1>
+            <p>Select your perfect color and get the HEX, RGB, HSL, and CMYK codes instantly. Perfect for designers, developers, and anyone working with colors.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
     <main class="container">
-        <!-- Top Banner Ad -->
-        <div class="ad-container rectangle">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                 data-ad-slot="XXXXXXXXXX"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+        <!-- AdSense Banner -->
+        <div class="ad-container">
+            <div class="ad-placeholder">
+                <!-- Replace with your actual AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-YOUR_ADSENSE_ID" data-ad-slot="YOUR_AD_SLOT" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
         </div>
-        
-        <section class="tool-section">
-            <div class="color-display">
-                <div class="color-main" id="colorMain"></div>
-                <div class="color-info">
-                    <div class="color-code">
-                        <input type="text" id="hexCode" value="#8e44ad" readonly>
-                        <button class="copy-btn" data-target="hexCode">Copy</button>
+
+        <!-- Color Picker Section -->
+        <section class="color-picker-section">
+            <div class="color-picker-container">
+                <div class="color-selector">
+                    <h2>Color Selector</h2>
+                    <input type="color" id="colorPicker" value="#4a6bff" style="width: 100%; height: 50px; margin: 15px 0;">
+
+                    <div style="margin-top: 20px;">
+                        <h3>Color Harmony</h3>
+                        <div style="display: flex; gap: 10px; margin-top: 10px;">
+                            <div style="width: 50px; height: 50px; border-radius: 4px; background-color: #ff4a4a;"></div>
+                            <div style="width: 50px; height: 50px; border-radius: 4px; background-color: #4aff4a;"></div>
+                            <div style="width: 50px; height: 50px; border-radius: 4px; background-color: #4a4aff;"></div>
+                            <div style="width: 50px; height: 50px; border-radius: 4px; background-color: #ffff4a;"></div>
+                            <div style="width: 50px; height: 50px; border-radius: 4px; background-color: #ff4aff;"></div>
+                        </div>
                     </div>
-                    
-                    <div class="color-formats">
-                        <div class="format-group">
+                </div>
+
+                <div class="color-display">
+                    <div class="color-preview" id="colorPreview" style="background-color: #4a6bff;"></div>
+
+                    <div class="color-values">
+                        <div class="color-value">
+                            <label>HEX</label>
+                            <input type="text" id="hexValue" value="#4a6bff" readonly>
+                            <button class="copy-btn" onclick="copyToClipboard('hexValue')">Copy</button>
+                        </div>
+
+                        <div class="color-value">
                             <label>RGB</label>
-                            <input type="text" id="rgbCode" value="rgb(142, 68, 173)" readonly>
+                            <input type="text" id="rgbValue" value="rgb(74, 107, 255)" readonly>
+                            <button class="copy-btn" onclick="copyToClipboard('rgbValue')">Copy</button>
                         </div>
-                        <div class="format-group">
+
+                        <div class="color-value">
                             <label>HSL</label>
-                            <input type="text" id="hslCode" value="hsl(284, 44%, 47%)" readonly>
+                            <input type="text" id="hslValue" value="hsl(231, 100%, 65%)" readonly>
+                            <button class="copy-btn" onclick="copyToClipboard('hslValue')">Copy</button>
                         </div>
-                        <div class="format-group">
+
+                        <div class="color-value">
                             <label>CMYK</label>
-                            <input type="text" id="cmykCode" value="cmyk(18%, 61%, 0%, 32%)" readonly>
+                            <input type="text" id="cmykValue" value="cmyk(71%, 58%, 0%, 0%)" readonly>
+                            <button class="copy-btn" onclick="copyToClipboard('cmykValue')">Copy</button>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="controls">
-                <div class="control-group">
-                    <label for="hue">Hue</label>
-                    <div class="range-container">
-                        <input type="range" id="hue" min="0" max="360" value="284">
-                        <span id="hueValue" class="range-value">284</span>
-                    </div>
-                </div>
-                
-                <div class="control-group">
-                    <label for="saturation">Saturation</label>
-                    <div class="range-container">
-                        <input type="range" id="saturation" min="0" max="100" value="44">
-                        <span id="saturationValue" class="range-value">44</span>
-                    </div>
-                </div>
-                
-                <div class="control-group">
-                    <label for="lightness">Lightness</label>
-                    <div class="range-container">
-                        <input type="range" id="lightness" min="0" max="100" value="47">
-                        <span id="lightnessValue" class="range-value">47</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="buttons">
-                <button id="randomBtn" class="random-btn">Random Color</button>
-            </div>
-            
-            <div class="palette-section">
-                <div class="palette-title">
-                    <h3>Color Palette</h3>
-                    <button id="generatePaletteBtn">Generate Palette</button>
-                </div>
-                <div class="palette" id="colorPalette">
-                    <!-- Palette colors will be generated here -->
-                </div>
-            </div>
         </section>
-        
-        <!-- Middle Rectangle Ad -->
-        <div class="ad-container rectangle">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                 data-ad-slot="XXXXXXXXXX"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-        
-        <section class="info-section">
-            <h2>About Color Formats</h2>
-            <p>Understanding different color formats is essential for design and development work. Here's a brief overview of the formats we support:</p>
-            
-            <h3>HEX (Hexadecimal)</h3>
-            <p>HEX colors are specified with a # followed by 6 hexadecimal digits (0-9, A-F). The first two digits represent red, the next two green, and the last two blue. HEX is widely used in web design because it's compact and supported by all browsers.</p>
-            
-            <!-- In-Content Ad -->
-            <div class="ad-container horizontal">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                     data-ad-slot="XXXXXXXXXX"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
+
+        <!-- AdSense Banner -->
+        <div class="ad-container">
+            <div class="ad-placeholder">
+                <!-- Replace with your actual AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-YOUR_ADSENSE_ID" data-ad-slot="YOUR_AD_SLOT" data-ad-format="auto" data-full-width-responsive="true"></ins>
                 <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
+                    (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
             </div>
-            
-            <h3>RGB (Red, Green, Blue)</h3>
-            <p>RGB defines colors by their red, green, and blue components, each ranging from 0 to 255. RGB is an additive color model where colors are created by mixing light. It's commonly used in digital displays and image editing software.</p>
-            
-            <h3>HSL (Hue, Saturation, Lightness)</h3>
-            <p>HSL represents colors in a more intuitive way: Hue (color angle on the color wheel), Saturation (intensity of the color), and Lightness (brightness level). HSL is particularly useful for creating color variations by adjusting saturation and lightness.</p>
-            
-            <h3>CMYK (Cyan, Magenta, Yellow, Key/Black)</h3>
-            <p>CMYK is a subtractive color model used in color printing. It defines colors by the percentages of cyan, magenta, yellow, and black ink. While primarily for print, understanding CMYK can help ensure colors translate well from screen to printed materials.</p>
-            
-            <!-- Vertical Ad -->
-            <div class="ad-container vertical">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                     data-ad-slot="XXXXXXXXXX"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-            
-            <h2>Color Theory Basics</h2>
-            <p>Effective use of color can significantly enhance your designs. Here are some fundamental concepts:</p>
-            
-            <h3>Color Harmony</h3>
-            <p>Color harmony refers to aesthetically pleasing color combinations. Common harmonious schemes include:</p>
-            <ul>
-                <li><strong>Monochromatic</strong>: Different shades of the same hue</li>
-                <li><strong>Analogous</strong>: Colors adjacent on the color wheel</li>
-                <li><strong>Complementary</strong>: Colors opposite each other on the wheel</li>
-                <li><strong>Triadic</strong>: Three colors evenly spaced on the wheel</li>
-            </ul>
-            
-            <h3>Color Psychology</h3>
-            <p>Colors evoke emotional responses and can influence perception:</p>
-            <ul>
-                <li><strong>Red</strong>: Energy, passion, urgency</li>
-                <li><strong>Blue</strong>: Trust, stability, calm</li>
-                <li><strong>Green</strong>: Growth, health, nature</li>
-                <li><strong>Yellow</strong>: Optimism, warmth, caution</li>
-                <li><strong>Purple</strong>: Luxury, creativity, mystery</li>
-            </ul>
-        </section>
-        
-        <!-- Bottom Banner Ad -->
-        <div class="ad-container rectangle">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                 data-ad-slot="XXXXXXXXXX"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
         </div>
     </main>
-    
+
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; <span id="currentYear"></span> DesignTools.com. All rights reserved.</p>
-            <p>All color processing happens in your browser - no data is sent to our servers.</p>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>Color Tools</h3>
+                <ul>
+                    <li><a href="/color-picker">Color Picker</a></li>
+                    <li><a href="/color-converter">Color Converter</a></li>
+                    <li><a href="/color-palettes">Color Palettes</a></li>
+                    <li><a href="/color-gradient">Gradient Generator</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/tutorials">Tutorials</a></li>
+                    <li><a href="/api">API</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container copyright">
+            <p>&copy; 2023 ColorPicker Tool. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set current year in footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-            
-            // DOM elements
-            const colorMain = document.getElementById('colorMain');
-            const hexCode = document.getElementById('hexCode');
-            const rgbCode = document.getElementById('rgbCode');
-            const hslCode = document.getElementById('hslCode');
-            const cmykCode = document.getElementById('cmykCode');
-            const hueSlider = document.getElementById('hue');
-            const saturationSlider = document.getElementById('saturation');
-            const lightnessSlider = document.getElementById('lightness');
-            const hueValue = document.getElementById('hueValue');
-            const saturationValue = document.getElementById('saturationValue');
-            const lightnessValue = document.getElementById('lightnessValue');
-            const randomBtn = document.getElementById('randomBtn');
-            const generatePaletteBtn = document.getElementById('generatePaletteBtn');
-            const colorPalette = document.getElementById('colorPalette');
-            const copyButtons = document.querySelectorAll('.copy-btn');
-            
-            // Initial color values
-            let hue = 284;
-            let saturation = 44;
-            let lightness = 47;
-            
-            // Update color when sliders change
-            hueSlider.addEventListener('input', updateColorFromSliders);
-            saturationSlider.addEventListener('input', updateColorFromSliders);
-            lightnessSlider.addEventListener('input', updateColorFromSliders);
-            
-            // Random color button
-            randomBtn.addEventListener('click', generateRandomColor);
-            
-            // Generate palette button
-            generatePaletteBtn.addEventListener('click', generateColorPalette);
-            
-            // Copy buttons
-            copyButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const targetId = this.getAttribute('data-target');
-                    const input = document.getElementById(targetId);
-                    input.select();
-                    document.execCommand('copy');
-                    
-                    // Visual feedback
-                    const originalText = this.textContent;
-                    this.textContent = 'Copied!';
-                    this.style.backgroundColor = var(--success-color);
-                    
-                    setTimeout(() => {
-                        this.textContent = originalText;
-                        this.style.backgroundColor = var(--primary-color);
-                    }, 2000);
-                });
-            });
-            
-            // Initialize with default color
-            updateColor(hue, saturation, lightness);
-            generateColorPalette();
-            
-            function updateColorFromSliders() {
-                hue = parseInt(hueSlider.value);
-                saturation = parseInt(saturationSlider.value);
-                lightness = parseInt(lightnessSlider.value);
-                
-                hueValue.textContent = hue;
-                saturationValue.textContent = saturation;
-                lightnessValue.textContent = lightness;
-                
-                updateColor(hue, saturation, lightness);
-            }
-            
-            function updateColor(h, s, l) {
-                // Convert HSL to HEX
-                const hex = hslToHex(h, s, l);
-                colorMain.style.backgroundColor = hex;
-                hexCode.value = hex;
-                
-                // Convert HSL to RGB
-                const rgb = hslToRgb(h, s, l);
-                rgbCode.value = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
-                
-                // Keep HSL
-                hslCode.value = `hsl(${h}, ${s}%, ${l}%)`;
-                
-                // Convert RGB to CMYK
-                const cmyk = rgbToCmyk(rgb.r, rgb.g, rgb.b);
-                cmykCode.value = `cmyk(${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%)`;
-            }
-            
-            function generateRandomColor() {
-                hue = Math.floor(Math.random() * 361);
-                saturation = Math.floor(Math.random() * 101);
-                lightness = Math.floor(Math.random() * 101);
-                
-                hueSlider.value = hue;
-                saturationSlider.value = saturation;
-                lightnessSlider.value = lightness;
-                
-                hueValue.textContent = hue;
-                saturationValue.textContent = saturation;
-                lightnessValue.textContent = lightness;
-                
-                updateColor(hue, saturation, lightness);
-                generateColorPalette();
-            }
-            
-            function generateColorPalette() {
-                colorPalette.innerHTML = '';
-                
-                // Generate 5 harmonious colors
-                const colors = [
-                    { h: hue, s: saturation, l: lightness }, // Main color
-                    { h: (hue + 30) % 360, s: saturation, l: lightness }, // Analogous
-                    { h: (hue + 150) % 360, s: saturation, l: lightness }, // Split complementary
-                    { h: hue, s: Math.min(100, saturation + 20), l: Math.min(100, lightness + 10) }, // Lighter variant
-                    { h: hue, s: Math.min(100, saturation + 10), l: Math.max(0, lightness - 20) } // Darker variant
-                ];
-                
-                colors.forEach(color => {
-                    const hex = hslToHex(color.h, color.s, color.l);
-                    const colorElement = document.createElement('div');
-                    colorElement.className = 'palette-color';
-                    colorElement.style.backgroundColor = hex;
-                    colorElement.innerHTML = `<div class="palette-code">${hex}</div>`;
-                    
-                    // Click to select this color
-                    colorElement.addEventListener('click', () => {
-                        hue = color.h;
-                        saturation = color.s;
-                        lightness = color.l;
-                        
-                        hueSlider.value = hue;
-                        saturationSlider.value = saturation;
-                        lightnessSlider.value = lightness;
-                        
-                        hueValue.textContent = hue;
-                        saturationValue.textContent = saturation;
-                        lightnessValue.textContent = lightness;
-                        
-                        updateColor(hue, saturation, lightness);
-                    });
-                    
-                    colorPalette.appendChild(colorElement);
-                });
-            }
-            
-            // Color conversion functions
-            function hslToHex(h, s, l) {
-                s /= 100;
-                l /= 100;
-                
-                let c = (1 - Math.abs(2 * l - 1)) * s;
-                let x = c * (1 - Math.abs((h / 60) % 2 - 1));
-                let m = l - c / 2;
-                let r = 0, g = 0, b = 0;
-                
-                if (0 <= h && h < 60) {
-                    r = c; g = x; b = 0;
-                } else if (60 <= h && h < 120) {
-                    r = x; g = c; b = 0;
-                } else if (120 <= h && h < 180) {
-                    r = 0; g = c; b = x;
-                } else if (180 <= h && h < 240) {
-                    r = 0; g = x; b = c;
-                } else if (240 <= h && h < 300) {
-                    r = x; g = 0; b = c;
-                } else if (300 <= h && h < 360) {
-                    r = c; g = 0; b = x;
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Color Picker Functionality
+        const colorPicker = document.getElementById('colorPicker');
+        const colorPreview = document.getElementById('colorPreview');
+        const hexValue = document.getElementById('hexValue');
+        const rgbValue = document.getElementById('rgbValue');
+        const hslValue = document.getElementById('hslValue');
+        const cmykValue = document.getElementById('cmykValue');
+
+        colorPicker.addEventListener('input', function() {
+            const selectedColor = this.value;
+            colorPreview.style.backgroundColor = selectedColor;
+            hexValue.value = selectedColor;
+
+            // Convert HEX to RGB
+            const r = parseInt(selectedColor.substr(1, 2), 16);
+            const g = parseInt(selectedColor.substr(3, 2), 16);
+            const b = parseInt(selectedColor.substr(5, 2), 16);
+            rgbValue.value = `rgb(${r}, ${g}, ${b})`;
+
+            // Convert RGB to HSL
+            const hsl = rgbToHsl(r, g, b);
+            hslValue.value = `hsl(${Math.round(hsl.h)}, ${Math.round(hsl.s)}%, ${Math.round(hsl.l)}%)`;
+
+            // Convert RGB to CMYK
+            const cmyk = rgbToCmyk(r, g, b);
+            cmykValue.value = `cmyk(${Math.round(cmyk.c)}%, ${Math.round(cmyk.m)}%, ${Math.round(cmyk.y)}%, ${Math.round(cmyk.k)}%)`;
+        });
+
+        function rgbToHsl(r, g, b) {
+            r /= 255, g /= 255, b /= 255;
+            const max = Math.max(r, g, b),
+                min = Math.min(r, g, b);
+            let h, s, l = (max + min) / 2;
+
+            if (max === min) {
+                h = s = 0; // achromatic
+            } else {
+                const d = max - min;
+                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                switch (max) {
+                    case r:
+                        h = (g - b) / d + (g < b ? 6 : 0);
+                        break;
+                    case g:
+                        h = (b - r) / d + 2;
+                        break;
+                    case b:
+                        h = (r - g) / d + 4;
+                        break;
                 }
-                
-                r = Math.round((r + m) * 255);
-                g = Math.round((g + m) * 255);
-                b = Math.round((b + m) * 255);
-                
-                return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+                h /= 6;
             }
-            
-            function hslToRgb(h, s, l) {
-                s /= 100;
-                l /= 100;
-                
-                let c = (1 - Math.abs(2 * l - 1)) * s;
-                let x = c * (1 - Math.abs((h / 60) % 2 - 1));
-                let m = l - c / 2;
-                let r = 0, g = 0, b = 0;
-                
-                if (0 <= h && h < 60) {
-                    r = c; g = x; b = 0;
-                } else if (60 <= h && h < 120) {
-                    r = x; g = c; b = 0;
-                } else if (120 <= h && h < 180) {
-                    r = 0; g = c; b = x;
-                } else if (180 <= h && h < 240) {
-                    r = 0; g = x; b = c;
-                } else if (240 <= h && h < 300) {
-                    r = x; g = 0; b = c;
-                } else if (300 <= h && h < 360) {
-                    r = c; g = 0; b = x;
-                }
-                
-                r = Math.round((r + m) * 255);
-                g = Math.round((g + m) * 255);
-                b = Math.round((b + m) * 255);
-                
-                return { r, g, b };
-            }
-            
-            function rgbToCmyk(r, g, b) {
-                let c = 1 - (r / 255);
-                let m = 1 - (g / 255);
-                let y = 1 - (b / 255);
-                let k = Math.min(c, m, y);
-                
-                c = (c - k) / (1 - k) || 0;
-                m = (m - k) / (1 - k) || 0;
-                y = (y - k) / (1 - k) || 0;
-                
+
+            return {
+                h: h * 360,
+                s: s * 100,
+                l: l * 100
+            };
+        }
+
+        function rgbToCmyk(r, g, b) {
+            if (r === 0 && g === 0 && b === 0) {
                 return {
-                    c: Math.round(c * 100),
-                    m: Math.round(m * 100),
-                    y: Math.round(y * 100),
-                    k: Math.round(k * 100)
+                    c: 0,
+                    m: 0,
+                    y: 0,
+                    k: 100
                 };
             }
-            
-            // Initialize AdSense ads
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        });
+
+            let c = 1 - (r / 255);
+            let m = 1 - (g / 255);
+            let y = 1 - (b / 255);
+            let k = Math.min(c, m, y);
+
+            c = (c - k) / (1 - k);
+            m = (m - k) / (1 - k);
+            y = (y - k) / (1 - k);
+
+            return {
+                c: c * 100,
+                m: m * 100,
+                y: y * 100,
+                k: k * 100
+            };
+        }
+
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            element.select();
+            document.execCommand('copy');
+
+            // Show copied notification
+            const originalText = element.nextElementSibling.textContent;
+            element.nextElementSibling.textContent = 'Copied!';
+            setTimeout(() => {
+                element.nextElementSibling.textContent = originalText;
+            }, 2000);
+        }
     </script>
 </body>
+
 </html>
